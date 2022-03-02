@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+
+    <link rel="stylesheet" href="./first-stile.css">
+    <link rel="stylesheet" href="./second-style.css">
+    <script src="./index.js" defer></script>
+
+    <style>
+        :root {
+            font-size: 25px;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            margin-top: 10vh;
+
+        }
+
+        .tiles-count {
+            color: #000;
+        }
+
+        .tile-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            margin: auto;
+
+            padding: 2rem;
+
+            background-color: #fff;
+
+            border-radius: 2rem;
+
+            box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+        }
+
+        .tile-grid__item {
+            position: relative;
+
+            width: 5rem;
+            height: 5rem;
+
+            border-radius: 1rem;
+
+            box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+
+            cursor: pointer;
+        }
+
+        .tile-grid__item-pop-up {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5rem;
+
+            visibility: hidden;
+
+            color: #000;
+            font-size: 1rem;
+
+            position: absolute;
+            content: "";
+
+            z-index: 9999;
+
+            top: 50%;
+            left: 50%;
+
+            width: fit-content;
+
+            border-radius: 1rem;
+
+            padding: 1rem;
+
+            background-color: #fff;
+
+            border: 1px solid gray;
+
+            opacity: 0;
+
+            transition: 0.5s opacity, 0.5s visibility;
+        }
+
+        .tile-grid__item--active .tile-grid__item-pop-up {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .css-rules-list {
+            margin: 0;
+        }
+
+        .css-rules-list__item {
+            width: max-content;
+        }
+
+        .css-rules-list__item:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main class="main">
+        <span class="tiles-count" id="tiles-count">Общее количество плиток: </span>
+        <div class="tile-grid" id="tile-grid"></div>
+    </main>
+</body>
+
+</html>
