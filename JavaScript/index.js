@@ -7,7 +7,7 @@ function getColorsFromStyleSheets(styleSheets) {
             const cssProperties = cssRuleText.split("{")[1].split("}")[0].split(";");
 
             for (let cssProperty of cssProperties) {
-                cssProperty = cssProperty.trim();
+                cssProperty = cssProperty.split("!important")[0].trim();
 
                 const matchResult = cssProperty.match(/color\s*:\s*(?<color>.+)/i);
                 if (!matchResult) {
@@ -72,8 +72,15 @@ function createTileGridItem(color) {
     const tileGridItemPopUp = createTileGridItemPopUp(color);
     tileGridItem.appendChild(tileGridItemPopUp);
 
-    tileGridItem.addEventListener("click", () => {
+    tileGridItem.addEventListener("click", (e) => {
         tileGridItem.classList.toggle("tile-grid__item--active");
+
+        const activeTileGridItems = document.querySelectorAll(".tile-grid__item--active");
+        for (const activeTileGridItem of activeTileGridItems) {
+            if (activeTileGridItem !== e.target) {
+                activeTileGridItem.classList.remove("tile-grid__item--active");
+            }
+        }
     });
 
     return tileGridItem;
