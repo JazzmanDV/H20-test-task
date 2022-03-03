@@ -1,0 +1,39 @@
+.app {
+    display: flex;
+    justify-content: space-evenly;
+
+    overflow: auto;
+
+    margin: 2rem;
+    padding: 2rem;
+
+    border-radius: 2rem;
+    background-color: white;
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.calendar-wrapper {
+    flex-grow: 1;
+    max-width: 70%;
+}
+
+.event {
+    position: relative;
+
+    background-color: #39e394;
+    border-color: #39e394;
+
+    cursor: pointer;
+
+    transition: 0.25s background-color;
+}
+
+.event:hover {
+    background-color: #a1a1a1;
+    border-color: #a1a1a1;
+}
+
+.event-free-date {
+    background-color: #3788d8;
+    border-color: #3788d8;
+}
