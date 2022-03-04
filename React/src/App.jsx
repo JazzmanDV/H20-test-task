@@ -76,6 +76,15 @@ const App = () => {
         preparedEvents = preparedEvents.filter((event) => !event.isFreeDate);
     }
 
+    const tileContentCallback = useCallback(
+        ({ date }) => {
+            const localeDateString = date.toLocaleDateString("en-GB").split("/").reverse().join("-");
+            const eventsOnThisDate = preparedEvents.filter((event) => event.start.split("T")[0] === localeDateString);
+            return eventsOnThisDate.length > 0 ? <CircleHint>{eventsOnThisDate.length}</CircleHint> : null;
+        },
+        [preparedEvents]
+    );
+
     return (
         <div className={styles.app}>
             <div className={styles.fullCalendarWrapper}>
@@ -103,15 +112,7 @@ const App = () => {
                 <SmallCalendar
                     tileClassName={[styles.tile]}
                     showFixedNumberOfWeeks={true}
-                    tileContent={({ date }) => {
-                        const localeDateString = date.toLocaleDateString("en-GB").split("/").reverse().join("-");
-
-                        const eventsOnThisDate = preparedEvents.filter(
-                            (event) => event.start.split("T")[0] === localeDateString
-                        );
-
-                        return eventsOnThisDate.length > 0 ? <CircleHint>{eventsOnThisDate.length}</CircleHint> : null;
-                    }}
+                    tileContent={tileContentCallback}
                 />
                 <CalendarFilter
                     cleaningTypeFilter={cleaningTypeFilter}
