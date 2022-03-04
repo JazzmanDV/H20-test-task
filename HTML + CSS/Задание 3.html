@@ -8,14 +8,14 @@
     <title>HTML + CSS | Задание 3</title>
 
     <style>
-        /* CSS, не относящийся к заданию (для более приятного вида) */
+        /* ------CSS, не относящийся к заданию (для более наглядного вида)------ */
 
         :root {
             font-size: 30px;
         }
 
         td {
-            border: 1px solid;
+            border: 1px solid #000;
         }
 
         td {
@@ -25,17 +25,20 @@
             text-align: center;
         }
 
-        /* CSS, относящийся к заданию */
+        /* ------CSS, относящийся к заданию------ */
 
+        /* Вторая ячейка в каждой четной строке закрашена градиентом ffd4aa - ff7f04 */
         table tr:nth-child(2n) td:nth-child(2) {
             background: linear-gradient(to right, #ffd4aa, #ff7f04);
         }
 
+        /* Четвертая ячейка в первой и третьей строке закрашена цветом ff0000 */
         table tr:nth-child(1) td:nth-child(4),
         table tr:nth-child(3) td:nth-child(4) {
             background-color: #ff0000;
         }
 
+        /* Каждый четный ряд таблицы закрашен в f8f8f8 */
         table tr:nth-child(2n) {
             background-color: #f8f8f8;
         }
