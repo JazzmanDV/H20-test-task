@@ -12,7 +12,7 @@
     box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
-.calendar-wrapper {
+.full-calendar-wrapper {
     flex-grow: 1;
     max-width: 70%;
 }
@@ -36,4 +36,15 @@
 .event-free-date {
     background-color: #3788d8;
     border-color: #3788d8;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tile {
+    position: relative;
+    overflow: visible !important;
 }

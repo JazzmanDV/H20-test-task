@@ -56,6 +56,11 @@ const mockEvents = [
         start: "2022-03-27T15:25:00",
         cleaningType: CleaningTypes.GENERAL_CLEANING,
     },
+    {
+        title: "Лучезарская ул., д.5",
+        start: "2022-03-31",
+        cleaningType: CleaningTypes.SUPPORT_CLEANING,
+    },
 ];
 
 export default mockEvents;

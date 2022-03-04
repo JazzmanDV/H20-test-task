@@ -1,0 +1,31 @@
+.circle-hint {
+    position: absolute;
+    content: "";
+
+    inset: 0;
+
+    background-color: transparent;
+
+    border-radius: 50rem;
+    border: 1px solid #00d9c3;
+}
+
+.circle-hint-number {
+    position: absolute;
+    content: "";
+
+    top: 0;
+    right: 0;
+
+    z-index: 9999;
+
+    transform: translate(25%, -25%);
+
+    width: 1rem;
+    height: 1rem;
+
+    color: #fff;
+    background-color: #00d9c3;
+
+    border-radius: 50rem;
+}

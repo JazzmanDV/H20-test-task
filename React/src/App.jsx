@@ -1,21 +1,30 @@
+// JS библиотеки
 import "@fullcalendar/react/dist/vdom";
-import Calendar from "@fullcalendar/react";
+import FullCalendar from "@fullcalendar/react";
+import SmallCalendar from "react-calendar";
 
+// FullCalendar плагины
 import dayGridPlugin from "@fullcalendar/daygrid";
 import bootstrap5Plugin from "@fullcalendar/bootstrap5";
 
+// CSS библиотеки
+import "react-calendar/dist/Calendar.css";
 import "bootswatch/dist/Litera/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { useState, useMemo } from "react";
 
+// Собственный js
 import CleaningTypeFilters from "/src/cleaningTypeFilters.js";
 import mockEvents from "/src/mockEvents.js";
 
+// Собственный css
 import "/src/common-css/reset-outline.css";
 import styles from "./App.module.css";
 
+// Компоненты
 import CalendarFilter from "/src/components/CalendarFilter/CalendarFilter";
+import CircleHint from "/src/components/CircleHint/CircleHint";
 
 const App = () => {
     const [events, setEvents] = useState(mockEvents);
@@ -68,11 +77,12 @@ const App = () => {
 
     return (
         <div className={styles.app}>
-            <div className={styles.calendarWrapper}>
-                <Calendar
+            <div className={styles.fullCalendarWrapper}>
+                <FullCalendar
                     plugins={[dayGridPlugin, bootstrap5Plugin]}
                     initialView="dayGridMonth"
                     locale="ru"
+                    firstDay={1}
                     buttonText={{
                         today: "Сегодня",
                         dayGridWeek: "Неделя",
@@ -88,14 +98,29 @@ const App = () => {
                     events={preparedEvents}
                 />
             </div>
-            <CalendarFilter
-                cleaningTypeFilter={cleaningTypeFilter}
-                onCleaningTypeFilterChange={handleCleaningTypeFilterChange}
-                notFreeDatesFilter={notFreeDatesFilter}
-                onNotFreeDatesFilterChange={handleNotFreeDatesFilterChange}
-                freeDatesFilter={freeDatesFilter}
-                onFreeDatesFilterChange={handleFreeDatesFilterChange}
-            />
+            <div className={styles.rightPanel}>
+                <SmallCalendar
+                    tileClassName={[styles.tile]}
+                    showFixedNumberOfWeeks={true}
+                    tileContent={({ activeStartDate, date, view }) => {
+                        const localeDateString = date.toLocaleDateString("en-GB").split("/").reverse().join("-");
+
+                        const eventsOnThisDate = preparedEvents.filter((event) => {
+                            return event.start.split("T")[0] === localeDateString;
+                        });
+
+                        return eventsOnThisDate.length > 0 ? <CircleHint>{eventsOnThisDate.length}</CircleHint> : null;
+                    }}
+                />
+                <CalendarFilter
+                    cleaningTypeFilter={cleaningTypeFilter}
+                    onCleaningTypeFilterChange={handleCleaningTypeFilterChange}
+                    notFreeDatesFilter={notFreeDatesFilter}
+                    onNotFreeDatesFilterChange={handleNotFreeDatesFilterChange}
+                    freeDatesFilter={freeDatesFilter}
+                    onFreeDatesFilterChange={handleFreeDatesFilterChange}
+                />
+            </div>
         </div>
     );
 };

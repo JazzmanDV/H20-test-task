@@ -9,12 +9,12 @@ const CalendarFilter = (props) => {
             <h2>Фильтры:</h2>
             <div className={styles.filtersWrapper}>
                 <div className="form-group">
-                    <label className="form-label mt-4" htmlFor="typeOfCleaningSelect">
+                    <label className="form-label" htmlFor="cleaningTypeSelect">
                         Выбрать тип уборки:
                     </label>
                     <select
                         className="form-select"
-                        id="typeOfCleaningSelect"
+                        id="cleaningTypeSelect"
                         value={props.cleaningTypeFilter}
                         onChange={(e) => props.onCleaningTypeFilterChange(e.target.value)}
                     >
