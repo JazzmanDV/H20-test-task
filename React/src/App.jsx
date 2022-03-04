@@ -27,6 +27,10 @@ import styles from "./App.module.css";
 import CalendarFilter from "/src/components/CalendarFilter/CalendarFilter";
 import CircleHint from "/src/components/CircleHint/CircleHint";
 
+const eventMouseEnter = (info) => {
+    info.el.title = info.event.title;
+};
+
 const App = () => {
     const [events, setEvents] = useState(mockEvents);
     const [cleaningTypeFilter, setCleaningTypeFilter] = useState(CleaningTypeFilters.ALL);
@@ -43,10 +47,6 @@ const App = () => {
 
     const handleFreeDatesFilterChange = useCallback(() => {
         setFreeDatesFilter((state) => !state);
-    }, []);
-
-    const eventMouseEnter = useCallback((info) => {
-        info.el.title = info.event.title;
     }, []);
 
     let preparedEvents = useMemo(() => {
