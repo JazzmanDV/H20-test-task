@@ -13,7 +13,7 @@ import "bootswatch/dist/Litera/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 // React
-import { useState, useMemo } from "react";
+import { useState, useCallback, useMemo } from "react";
 
 // Собственный js
 import CleaningTypeFilters from "/src/cleaningTypeFilters.js";
@@ -33,9 +33,9 @@ const App = () => {
     const [notFreeDatesFilter, setNotFreeDatesFilter] = useState(false);
     const [freeDatesFilter, setFreeDatesFilter] = useState(false);
 
-    const handleCleaningTypeFilterChange = (cleaningTypeFilter) => {
+    const handleCleaningTypeFilterChange = useCallback((cleaningTypeFilter) => {
         setCleaningTypeFilter(cleaningTypeFilter);
-    };
+    }, []);
 
     const handleNotFreeDatesFilterChange = () => {
         setNotFreeDatesFilter((state) => !state);

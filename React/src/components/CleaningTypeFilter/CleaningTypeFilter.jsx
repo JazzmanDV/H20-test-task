@@ -1,6 +1,8 @@
+import { memo } from "react";
+
 import CleaningTypeFilters from "/src/cleaningTypeFilters.js";
 
-const CleaningTypeFilter = (props) => {
+const CleaningTypeFilter = memo((props) => {
     return (
         <div className="form-group">
             <label className="form-label" htmlFor="cleaningTypeSelect">
@@ -19,6 +21,6 @@ const CleaningTypeFilter = (props) => {
             </select>
         </div>
     );
-};
+});
 
 export default CleaningTypeFilter;
