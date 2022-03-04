@@ -37,13 +37,13 @@ const App = () => {
         setCleaningTypeFilter(cleaningTypeFilter);
     }, []);
 
-    const handleNotFreeDatesFilterChange = () => {
+    const handleNotFreeDatesFilterChange = useCallback(() => {
         setNotFreeDatesFilter((state) => !state);
-    };
+    }, []);
 
-    const handleFreeDatesFilterChange = () => {
+    const handleFreeDatesFilterChange = useCallback(() => {
         setFreeDatesFilter((state) => !state);
-    };
+    }, []);
 
     const eventMouseEnter = (info) => {
         info.el.title = info.event.title;

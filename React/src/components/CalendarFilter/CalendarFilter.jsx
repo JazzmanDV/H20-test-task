@@ -16,14 +16,14 @@ const CalendarFilter = (props) => {
                     <ButtonFilter
                         active={!props.notFreeDatesFilter}
                         className={props.notFreeDatesFilter ? "btn-outline-success" : "btn-success"}
-                        onClick={() => props.onNotFreeDatesFilterChange()}
+                        onClick={props.onNotFreeDatesFilterChange}
                     >
                         Назначено время
                     </ButtonFilter>
                     <ButtonFilter
                         active={!props.freeDatesFilter}
                         className={props.freeDatesFilter ? "btn-outline-primary" : "btn-primary"}
-                        onClick={() => props.onFreeDatesFilterChange()}
+                        onClick={props.onFreeDatesFilterChange}
                     >
                         Свободная дата
                     </ButtonFilter>
