@@ -45,9 +45,9 @@ const App = () => {
         setFreeDatesFilter((state) => !state);
     }, []);
 
-    const eventMouseEnter = (info) => {
+    const eventMouseEnter = useCallback((info) => {
         info.el.title = info.event.title;
-    };
+    }, []);
 
     let preparedEvents = useMemo(() => {
         return events.map((event) => {
