@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>JavaScript</title>
 
     <link rel="stylesheet" href="./first-stile.css">
     <link rel="stylesheet" href="./second-style.css">
     <link rel="stylesheet" href="./main.css">
+
     <script src="./index.js" defer></script>
 
     <style>
         :root {
             font-size: 25px;
+            color: #000;
         }
 
         .main {
@@ -25,18 +28,13 @@
             gap: 1rem;
 
             margin: 2rem;
-
-        }
-
-        .tiles-count {
-            color: #000;
         }
 
         .tile-grid {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
             gap: 1rem;
 
             margin: auto;
@@ -81,12 +79,11 @@
             max-width: 50vw;
             max-height: 80vh;
 
-            border-radius: 1rem;
-
             padding: 1rem;
 
             background-color: #fff;
 
+            border-radius: 1rem;
             border: 1px solid gray;
 
             opacity: 0;

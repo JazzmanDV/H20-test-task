@@ -43,7 +43,6 @@ function createList(cssRules) {
 
     for (const cssRule of cssRules) {
         const listItem = createListItem(cssRule);
-
         list.appendChild(listItem);
     }
 
@@ -58,8 +57,8 @@ function createTileGridItemPopUp(color) {
     tileGridItemColorText.innerText = color.colorText;
     tileGridItemPopUp.appendChild(tileGridItemColorText);
 
-    const orderedList = createList(color.cssRules);
-    tileGridItemPopUp.appendChild(orderedList);
+    const list = createList(color.cssRules);
+    tileGridItemPopUp.appendChild(list);
 
     return tileGridItemPopUp;
 }
@@ -98,4 +97,4 @@ for (const color in colors) {
     counter++;
 }
 
-document.getElementById("tiles-count").textContent += ` ${counter}`;
+document.getElementById("tiles-count").innerText += ` ${counter}`;
