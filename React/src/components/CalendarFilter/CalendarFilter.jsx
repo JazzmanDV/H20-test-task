@@ -1,42 +1,32 @@
-import CleaningTypeFilters from "/src/cleaningTypeFilters.js";
-
-import "/src/common-css/button.css";
 import styles from "./CalendarFilter.module.css";
+
+import CleaningTypeFilter from "/src/components/CleaningTypeFilter/CleaningTypeFilter";
+import ButtonFilter from "/src/components/ButtonFilter/ButtonFilter";
 
 const CalendarFilter = (props) => {
     return (
         <div>
             <h2>Фильтры:</h2>
             <div className={styles.filtersWrapper}>
-                <div className="form-group">
-                    <label className="form-label" htmlFor="cleaningTypeSelect">
-                        Выбрать тип уборки:
-                    </label>
-                    <select
-                        className="form-select"
-                        id="cleaningTypeSelect"
-                        value={props.cleaningTypeFilter}
-                        onChange={(e) => props.onCleaningTypeFilterChange(e.target.value)}
-                    >
-                        <option value={CleaningTypeFilters.ALL}>Все</option>
-                        <option value={CleaningTypeFilters.GENERAL_CLEANING}>Генеральная уборка</option>
-                        <option value={CleaningTypeFilters.SUPPORT_CLEANING}>Поддерживающая уборка</option>
-                        <option value={CleaningTypeFilters.POST_CONSTRUCTION_CLEANING}>Послестроительная уборка</option>
-                    </select>
-                </div>
+                <CleaningTypeFilter
+                    cleaningTypeFilter={props.cleaningTypeFilter}
+                    onCleaningTypeFilterChange={props.onCleaningTypeFilterChange}
+                />
                 <div className={styles.buttonsWrapper}>
-                    <button
-                        className={"btn " + (props.notFreeDatesFilter ? "btn-outline-success" : "btn-success")}
-                        onClick={(e) => props.onNotFreeDatesFilterChange()}
+                    <ButtonFilter
+                        active={!props.notFreeDatesFilter}
+                        className={props.notFreeDatesFilter ? "btn-outline-success" : "btn-success"}
+                        onClick={() => props.onNotFreeDatesFilterChange()}
                     >
                         Назначено время
-                    </button>
-                    <button
-                        className={"btn " + (props.freeDatesFilter ? "btn-outline-primary" : "btn-primary")}
-                        onClick={(e) => props.onFreeDatesFilterChange()}
+                    </ButtonFilter>
+                    <ButtonFilter
+                        active={!props.freeDatesFilter}
+                        className={props.freeDatesFilter ? "btn-outline-primary" : "btn-primary"}
+                        onClick={() => props.onFreeDatesFilterChange()}
                     >
                         Свободная дата
-                    </button>
+                    </ButtonFilter>
                 </div>
             </div>
         </div>

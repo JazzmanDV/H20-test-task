@@ -3,8 +3,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import legacy from "@vitejs/plugin-legacy";
 
-// import svgr from "@svgr/rollup";
-
 import postcssPresetEnv from "postcss-preset-env";
 
 export default defineConfig({
@@ -13,7 +11,6 @@ export default defineConfig({
         legacy({
             additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
         }),
-        // svgr(),
     ],
     base: "./",
     build: {
@@ -21,11 +18,7 @@ export default defineConfig({
     },
     css: {
         postcss: {
-            plugins: [
-                postcssPresetEnv({
-                    // importFrom: "./src/variables.css",
-                }),
-            ],
+            plugins: [postcssPresetEnv({})],
         },
         modules: {
             localsConvention: "dashesOnly",

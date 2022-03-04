@@ -1,4 +1,4 @@
-// JS библиотеки
+// React библиотеки
 import "@fullcalendar/react/dist/vdom";
 import FullCalendar from "@fullcalendar/react";
 import SmallCalendar from "react-calendar";
@@ -12,6 +12,7 @@ import "react-calendar/dist/Calendar.css";
 import "bootswatch/dist/Litera/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+// React
 import { useState, useMemo } from "react";
 
 // Собственный js
@@ -102,12 +103,12 @@ const App = () => {
                 <SmallCalendar
                     tileClassName={[styles.tile]}
                     showFixedNumberOfWeeks={true}
-                    tileContent={({ activeStartDate, date, view }) => {
+                    tileContent={({ date }) => {
                         const localeDateString = date.toLocaleDateString("en-GB").split("/").reverse().join("-");
 
-                        const eventsOnThisDate = preparedEvents.filter((event) => {
-                            return event.start.split("T")[0] === localeDateString;
-                        });
+                        const eventsOnThisDate = preparedEvents.filter(
+                            (event) => event.start.split("T")[0] === localeDateString
+                        );
 
                         return eventsOnThisDate.length > 0 ? <CircleHint>{eventsOnThisDate.length}</CircleHint> : null;
                     }}
