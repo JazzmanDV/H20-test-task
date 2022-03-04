@@ -4,7 +4,7 @@ import "/src/common-css/button.css";
 
 const ButtonFilter = memo((props) => {
     return (
-        <button className={"btn " + props.className} onClick={() => props.onClick()}>
+        <button className={"btn " + props.className} onClick={props.onClick}>
             {props.children}
         </button>
     );
